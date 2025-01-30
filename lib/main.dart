@@ -22,7 +22,7 @@ class MyWidget extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('My first project in VS Code'),
+          title: const Text('My first project in VS Code && github'),
         ),
         body: const Center(
           child: CircleAvatar(
