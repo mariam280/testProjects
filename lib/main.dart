@@ -1,6 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:newproject/screens/my_cart_view.dart';
+import 'package:newproject/feature/presentation/views/my_cart_view.dart';
 
 void main() {
   runApp(
