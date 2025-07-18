@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newproject/core/widgets/custom_button.dart';
+import 'package:newproject/feature/presentation/views/payment_details.dart';
 import 'package:newproject/feature/presentation/views/widgets/order_prices.dart';
-import 'package:newproject/feature/presentation/views/widgets/payment_details_body.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({super.key});
@@ -29,7 +29,7 @@ class MyCartViewBody extends StatelessWidget {
       CustomButton(text: 'Complete Payment', onTap: () {
           // Handle payment completion
           Navigator.push(context, MaterialPageRoute(
-            builder: (context) => const PaymentDetailsBody()));
+            builder: (context) => const PaymentDetails()));
         }),
       ],),
     );
