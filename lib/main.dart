@@ -1,10 +1,11 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:newproject/screens/my_cart_view.dart';
 
 void main() {
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) => const MyWidget(),
     ),
   );
@@ -19,21 +20,7 @@ class MyWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('My first project in VS Code && github'),
-        ),
-        body: const Center(
-          child: CircleAvatar(
-            radius: 100,
-            backgroundColor: Colors.amber,
-            child: Text(
-              'Eng:Mariam',
-              style: TextStyle(fontSize: 25, color: Colors.blue),
-            ),
-          ),
-        ),
-      ),
+      home: const MyCartView(),
     );
   }
 }
