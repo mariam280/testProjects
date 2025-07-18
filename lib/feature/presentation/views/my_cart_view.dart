@@ -9,7 +9,7 @@ class MyCartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(title: 'My Cart'),
+      appBar: buildAppBar(title: 'My Cart', context: context),
       body:const MyCartViewBody(),
     );
   }

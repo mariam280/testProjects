@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:newproject/core/widgets/custom_button.dart';
 import 'package:newproject/feature/presentation/views/widgets/order_prices.dart';
+import 'package:newproject/feature/presentation/views/widgets/payment_details_body.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({super.key});
@@ -7,10 +9,10 @@ class MyCartViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 16, bottom: 25),
+      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
       child: Column(children: [
-        Image.asset('assets/images/basket_image.png'),
-      const  SizedBox(height: 25),
+        Expanded(child: Image.asset('assets/images/basket_image.png')),
+      const  SizedBox(height: 16),
          const Column(
         spacing: 12,
         children: [
@@ -24,6 +26,11 @@ class MyCartViewBody extends StatelessWidget {
       const SizedBox(height: 12),
       const TotalPrice(title: 'Total', price: '50.97'),
       const SizedBox(height: 20),
+      CustomButton(text: 'Complete Payment', onTap: () {
+          // Handle payment completion
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => const PaymentDetailsBody()));
+        }),
       ],),
     );
   }

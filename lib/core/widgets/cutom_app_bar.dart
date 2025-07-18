@@ -1,14 +1,17 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:newproject/core/utils/styles.dart';
 
-AppBar buildAppBar({final String? title}) {
+AppBar buildAppBar({required BuildContext context, final String? title}) {
   return AppBar(
     leading: Center(
-      child: SvgPicture.asset(
-        'assets/images/arrow.svg',
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+        child: SvgPicture.asset(
+          'assets/images/arrow.svg',
+        ),
       ),
     ),
     elevation: 0,
