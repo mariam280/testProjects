@@ -11,9 +11,10 @@ class ThankYouView extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: buildAppBar(
         context: context,
-        title: 'Thank You',
       ),
-      body: const ThankYouViewBody(),
+      body: Transform.translate(
+        offset: const Offset(0, -15),
+        child: const ThankYouViewBody()),
     );
   }
 }

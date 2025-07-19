@@ -4,10 +4,7 @@ import 'package:newproject/feature/presentation/views/my_cart_view.dart';
 
 void main() {
   runApp(
-    DevicePreview(
-      enabled: false,
-      builder: (context) => const MyWidget(),
-    ),
+    const MyWidget(),
   );
 }
 
@@ -16,11 +13,9 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      locale: DevicePreview.locale(context),
+    return const MaterialApp(
       builder: DevicePreview.appBuilder,
-      home: const MyCartView(),
+      home:  MyCartView(),
     );
   }
 }
