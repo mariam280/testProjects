@@ -64,11 +64,11 @@ class YhankYouCard extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-           const CardInfoWidget(),
-           const  Spacer(),
-           const ThankYouViewFooter(),
-             SizedBox(
-             height: MediaQuery.of(context).size.height * 0.0230,
+            const CardInfoWidget(),
+            const Spacer(),
+            const ThankYouViewFooter(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.0230,
             ),
           ],
         ),
