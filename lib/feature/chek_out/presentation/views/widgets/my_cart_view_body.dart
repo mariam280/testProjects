@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newproject/core/widgets/custom_button.dart';
-import 'package:newproject/feature/presentation/views/payment_details.dart';
-import 'package:newproject/feature/presentation/views/widgets/order_prices.dart';
+import 'package:newproject/feature/chek_out/presentation/views/payment_details.dart';
+import 'package:newproject/feature/chek_out/presentation/views/widgets/order_prices.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({super.key});

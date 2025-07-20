@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newproject/feature/presentation/views/widgets/custom_check_icon.dart';
-import 'package:newproject/feature/presentation/views/widgets/custom_dashed_line.dart';
-import 'package:newproject/feature/presentation/views/widgets/thank_you_card.dart';
+import 'package:newproject/feature/chek_out/presentation/views/widgets/custom_check_icon.dart';
+import 'package:newproject/feature/chek_out/presentation/views/widgets/custom_dashed_line.dart';
+import 'package:newproject/feature/chek_out/presentation/views/widgets/thank_you_card.dart';
 
 class ThankYouViewBody extends StatelessWidget {
   const ThankYouViewBody({super.key});

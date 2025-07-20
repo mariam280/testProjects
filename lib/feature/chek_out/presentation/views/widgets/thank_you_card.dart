@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:newproject/feature/presentation/views/widgets/card_info_widget.dart';
-import 'package:newproject/feature/presentation/views/widgets/order_prices.dart';
-import 'package:newproject/feature/presentation/views/widgets/thank_you_view_footer.dart';
+import 'package:newproject/feature/chek_out/presentation/views/widgets/card_info_widget.dart';
+import 'package:newproject/feature/chek_out/presentation/views/widgets/order_prices.dart';
+import 'package:newproject/feature/chek_out/presentation/views/widgets/thank_you_view_footer.dart';
 
-import '../../../../core/utils/styles.dart';
+import '../../../../../core/utils/styles.dart';
 import 'payment_info_item.dart';
 
 class YhankYouCard extends StatelessWidget {

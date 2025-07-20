@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newproject/core/widgets/cutom_app_bar.dart';
-import 'package:newproject/feature/presentation/views/widgets/payment_details_body.dart';
+import 'package:newproject/feature/chek_out/presentation/views/widgets/payment_details_body.dart';
 
 class PaymentDetails extends StatelessWidget {
   const PaymentDetails({super.key});
