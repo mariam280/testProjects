@@ -1,16 +1,16 @@
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:newproject/core/utils/styles.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     this.onTap,
-    required this.text,
+    required this.text,  this.isLoading = false,
   });
 
   final void Function()? onTap;
-
+ final bool isLoading ;
   final String text;
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CustomButton extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
+          child: isLoading? const CircularProgressIndicator(): Text(
             text,
             textAlign: TextAlign.center,
             style: Styles.style22,

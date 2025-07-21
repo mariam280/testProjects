@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newproject/core/widgets/custom_button.dart';
-import 'package:newproject/feature/chek_out/presentation/views/payment_details.dart';
+import 'package:newproject/feature/chek_out/data/repos/check_out_repo_impl.dart';
+import 'package:newproject/feature/chek_out/presentation/manager/payment_cubit/payment_cubit.dart';
 import 'package:newproject/feature/chek_out/presentation/views/widgets/order_prices.dart';
 
 import 'payment_methods_bottom_sheet.dart';
@@ -32,13 +34,14 @@ class MyCartViewBody extends StatelessWidget {
           CustomButton(
               text: 'Complete Payment',
               onTap: () {
-                // Handle payment completion
-                // Navigator.push(context, MaterialPageRoute(
-                //   builder: (context) => const PaymentDetails()));
-
-                showModalBottomSheet(context: context,
-                 builder: (context){
-                  return const PaymentMethodsBottomSheet();});
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return BlocProvider(
+                        create: (context) => PaymentCubit(CheckOutRepoImpl()),
+                        child: const PaymentMethodsBottomSheet(),
+                      );
+                    });
               }),
         ],
       ),
