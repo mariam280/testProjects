@@ -22,8 +22,12 @@ class CustomBottomBlocConsumer extends StatelessWidget {
                 builder: (context) => const ThankYouView(),
               ));
         } else if (state is PaymentFailure) {
+          Navigator.of(context).pop();
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errorMessage)),
+            SnackBar(
+              content: Text(state
+                  .errorMessage), /*duration: const Duration(seconds: 30),*/
+            ),
           );
         }
       },
@@ -31,8 +35,12 @@ class CustomBottomBlocConsumer extends StatelessWidget {
         return CustomButton(
           onTap: () {
             PaymentIntentInputModel paymentIntentInputModel =
-                PaymentIntentInputModel(currency: 'USD', amount: '100');
-            BlocProvider.of<PaymentCubit>(context).makePayment(paymentIntenInputModel: paymentIntentInputModel);
+                PaymentIntentInputModel(
+                    currency: 'USD',
+                    amount: '100',
+                    customerId: 'cus_Sii59kHxSCkU8J');
+            BlocProvider.of<PaymentCubit>(context)
+                .makePayment(paymentIntenInputModel: paymentIntentInputModel);
           },
           text: 'Continue',
           isLoading: state is PaymentLoading ? true : false,

@@ -14,7 +14,8 @@ class ThankYouViewBody extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           const YhankYouCard(),
-          const Positioned(top: -50, left: 0, right: 0, child: CustomCheckIcon()),
+          const Positioned(
+              top: -50, left: 0, right: 0, child: CustomCheckIcon()),
           Positioned(
               left: -20,
               bottom: MediaQuery.sizeOf(context).height * .2,
@@ -27,11 +28,12 @@ class ThankYouViewBody extends StatelessWidget {
               child: const CircleAvatar(
                 backgroundColor: Colors.white,
               )),
-              Positioned(
-              bottom: MediaQuery.sizeOf(context).height * .2+ 20,
-              left: 20 +8,
-              right:20 +8,
-              child:const CustomDashedLine(),),
+          Positioned(
+            bottom: MediaQuery.sizeOf(context).height * .2 + 20,
+            left: 20 + 8,
+            right: 20 + 8,
+            child: const CustomDashedLine(),
+          ),
         ],
       ),
     );

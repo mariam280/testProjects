@@ -7,13 +7,13 @@ class PaymentDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildAppBar(
         context: context,
         title: 'Payment Details',
       ),
-      body:const PaymentDetailsBody(),
+      body: const PaymentDetailsBody(),
     );
   }
 }
