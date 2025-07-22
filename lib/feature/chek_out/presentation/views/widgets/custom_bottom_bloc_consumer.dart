@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:newproject/feature/chek_out/data/models/payment_intent_input_model.dart';
 import 'package:newproject/feature/chek_out/presentation/manager/payment_cubit/payment_cubit.dart';
 import 'package:newproject/feature/chek_out/presentation/views/thank_you_view.dart';
@@ -34,13 +35,61 @@ class CustomBottomBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           onTap: () {
-            PaymentIntentInputModel paymentIntentInputModel =
-                PaymentIntentInputModel(
-                    currency: 'USD',
-                    amount: '100',
-                    customerId: 'cus_Sii59kHxSCkU8J');
-            BlocProvider.of<PaymentCubit>(context)
-                .makePayment(paymentIntenInputModel: paymentIntentInputModel);
+            // PaymentIntentInputModel paymentIntentInputModel =
+            //     PaymentIntentInputModel(
+            //         currency: 'USD',
+            //         amount: '100',
+            //         customerId: 'cus_Sii59kHxSCkU8J');
+            // BlocProvider.of<PaymentCubit>(context)
+            //     .makePayment(paymentIntenInputModel: paymentIntentInputModel);
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => PaypalCheckoutView(
+                sandboxMode: true,
+                clientId: "",
+                secretKey: "",
+                transactions: const [
+                  {
+                    "amount": {
+                      "total": '70',
+                      "currency": "USD",
+                      "details": {
+                        "subtotal": '70',
+                        "shipping": '0',
+                        "shipping_discount": 0
+                      }
+                    },
+                    "description": "The payment transaction description.",
+                    "item_list": {
+                      "items": [
+                        {
+                          "name": "Apple",
+                          "quantity": 4,
+                          "price": '5',
+                          "currency": "USD"
+                        },
+                        {
+                          "name": "Pineapple",
+                          "quantity": 5,
+                          "price": '10',
+                          "currency": "USD"
+                        }
+                      ],
+                    }
+                  }
+                ],
+                note: "Contact us for any questions on your order.",
+                onSuccess: (Map params) async {
+                  print("onSuccess: $params");
+                },
+                onError: (error) {
+                  print("onError: $error");
+                  Navigator.pop(context);
+                },
+                onCancel: () {
+                  print('cancelled:');
+                },
+              ),
+            ));
           },
           text: 'Continue',
           isLoading: state is PaymentLoading ? true : false,

@@ -38,7 +38,7 @@ class StripeService {
     await Stripe.instance.presentPaymentSheet();
   }
 
-  // Future<PaymentIntentModel> createCustomer(
+  // Future<PaymentIntentModel> createCustomer(       الميثود دي بحطها في المكان اللي بعمل فيه يوزر جديد زي createAccount
   //     PaymentIntentInputModel paymentIntentInputModel) async {
   //   final response = await apiService.post(
   //     contentType: Headers.formUrlEncodedContentType,
