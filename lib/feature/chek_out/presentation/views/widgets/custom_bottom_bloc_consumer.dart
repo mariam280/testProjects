@@ -10,8 +10,9 @@ import '../../../../../core/widgets/custom_button.dart';
 class CustomBottomBlocConsumer extends StatelessWidget {
   const CustomBottomBlocConsumer({
     super.key,
+    required this.isPaypal,
   });
-
+  final bool isPaypal;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PaymentCubit, PaymentState>(
@@ -35,9 +36,12 @@ class CustomBottomBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           onTap: () {
-            excuteCardPayment(context);
-            var transactionData = getTransaction();
-            exceutePaypalPayment(context, transactionData);
+            if (isPaypal) {
+              var transactionData = getTransaction();
+              exceutePaypalPayment(context, transactionData);
+            } else {
+              excuteCardPayment(context);
+            }
           },
           text: 'Continue',
           isLoading: state is PaymentLoading ? true : false,

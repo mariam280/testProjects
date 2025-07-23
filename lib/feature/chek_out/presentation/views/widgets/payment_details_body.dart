@@ -22,9 +22,9 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 30, top: 20),
       child: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(
-            child: PaymentMethodsListView(),
-          ),
+          // const SliverToBoxAdapter(
+          //   child: PaymentMethodsListView(),
+          // ),
           const SliverToBoxAdapter(
             child: SizedBox(
               height: 16,
