@@ -16,7 +16,7 @@ class CheckOutRepoImpl implements CheckOutRepo {
           paymentIntenInputModel: paymentIntenInputModel);
       return right(null);
     } on StripeException catch (e) {
-      return left(ServerFailure(errorMessage: e.toString()));
+      return left(ServerFailure(errorMessage: e.error.message ?? 'Payment failed, please try again.'));
     } catch (e) {
       return left(ServerFailure(errorMessage: e.toString()));
     }

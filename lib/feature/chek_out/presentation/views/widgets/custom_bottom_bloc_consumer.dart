@@ -1,15 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
-import 'package:newproject/core/utils/api_keys.dart';
-import 'package:newproject/feature/chek_out/data/models/amount_model/amount_model.dart';
-import 'package:newproject/feature/chek_out/data/models/amount_model/details.dart';
-import 'package:newproject/feature/chek_out/data/models/item_list_model/item_list_model.dart';
-import 'package:newproject/feature/chek_out/data/models/item_list_model/order_item.dart';
 import 'package:newproject/feature/chek_out/presentation/manager/payment_cubit/payment_cubit.dart';
 import 'package:newproject/feature/chek_out/presentation/views/thank_you_view.dart';
+import '../../../../../core/functions/exceute_payment_card.dart';
+import '../../../../../core/functions/exceute_paypal_payment.dart';
+import '../../../../../core/functions/get_transaction.dart';
 import '../../../../../core/widgets/custom_button.dart';
 
 class CustomBottomBlocConsumer extends StatelessWidget {
@@ -40,13 +35,7 @@ class CustomBottomBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           onTap: () {
-            // PaymentIntentInputModel paymentIntentInputModel =
-            //     PaymentIntentInputModel(
-            //         currency: 'USD',
-            //         amount: '100',
-            //         customerId: 'cus_Sii59kHxSCkU8J');
-            // BlocProvider.of<PaymentCubit>(context)
-            //     .makePayment(paymentIntenInputModel: paymentIntentInputModel);
+            excuteCardPayment(context);
             var transactionData = getTransaction();
             exceutePaypalPayment(context, transactionData);
           },
@@ -55,57 +44,5 @@ class CustomBottomBlocConsumer extends StatelessWidget {
         );
       },
     );
-  }
-
-  void exceutePaypalPayment(
-      BuildContext context,
-      ({
-        AmountModel amountModel,
-        ItemListModel itemListModel
-      }) transactionData) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (BuildContext context) => PaypalCheckoutView(
-        sandboxMode: true,
-        clientId: ApiKeys.clintIDPaypal,
-        secretKey: ApiKeys.secretKeyPaypal,
-        transactions: [
-          {
-            "amount": transactionData.amountModel.toJson(),
-            "description": "The payment transaction description.",
-            "item_list": transactionData.itemListModel.toJson(),
-          }
-        ],
-        note: "Contact us for any questions on your order.",
-        onSuccess: (Map params) async {
-          log("onSuccess: $params");
-        },
-        onError: (error) {
-          log("onError: $error");
-          Navigator.pop(context);
-        },
-        onCancel: () {
-          log('cancelled:');
-        },
-      ),
-    ));
-  }
-
-  ({AmountModel amountModel, ItemListModel itemListModel}) getTransaction() {      // record بعمله لو عايزة ارجع كذا datatype في نفس الميثود
-    AmountModel amountModel = AmountModel(
-      currency: 'USD',
-      total: '70',
-      details: Details(
-        subtotal: '70',
-        shipping: '0',
-        shippingDiscount: 0,
-      ),
-    );
-    List<OrderItemModel> orders = [
-      OrderItemModel(name: "Apple", quantity: 4, price: '5', currency: "USD"),
-      OrderItemModel(
-          name: "Pineapple", quantity: 5, price: '10', currency: "USD"),
-    ];
-    ItemListModel itemListModel = ItemListModel(orders: orders);
-    return (amountModel: amountModel, itemListModel: itemListModel);
   }
 }
